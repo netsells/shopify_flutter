@@ -12,9 +12,13 @@ query getCollectionsByIds($ids: [ID!]!){
         altText
       }
       products (first: 10) {
+        pageInfo {
+          hasNextPage
+        }
         edges {
           cursor
           node {
+            handle
             id
             title
           }
