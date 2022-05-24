@@ -11,19 +11,6 @@ query getCollectionsByIds($ids: [ID!]!){
         id
         altText
       }
-      products (first: 10) {
-        pageInfo {
-          hasNextPage
-        }
-        edges {
-          cursor
-          node {
-            handle
-            id
-            title
-          }
-        }
-      }
       title
       updatedAt
     }
