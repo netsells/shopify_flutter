@@ -11,9 +11,17 @@ query getCollectionsByIds($ids: [ID!]!){
         id
         altText
       }
+      products {
+        edges {
+          cursor
+          node {
+            id
+            title
+          }
+        }
+      }
       title
       updatedAt
     }
   }
 }''';
-
