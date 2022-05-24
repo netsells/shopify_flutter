@@ -11,7 +11,7 @@ query getCollectionsByIds($ids: [ID!]!){
         id
         altText
       }
-      products (last: 0) {
+      products (first: 10) {
         edges {
           cursor
           node {
