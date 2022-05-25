@@ -9,10 +9,10 @@ part of 'unit_price_measurement.dart';
 _$_UnitPriceMeasurement _$$_UnitPriceMeasurementFromJson(
         Map<String, dynamic> json) =>
     _$_UnitPriceMeasurement(
-      measuredType: json['measuredType'] as String,
-      quantityUnit: json['quantityUnit'] as String,
+      measuredType: json['measuredType'] as String?,
+      quantityUnit: json['quantityUnit'] as String?,
       quantityValue: (json['quantityValue'] as num).toDouble(),
-      referenceUnit: json['referenceUnit'] as String,
+      referenceUnit: json['referenceUnit'] as String?,
       referenceValue: json['referenceValue'] as int,
     );
 

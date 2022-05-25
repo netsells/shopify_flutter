@@ -7,10 +7,10 @@ part 'unit_price_measurement.g.dart';
 class UnitPriceMeasurement with _$UnitPriceMeasurement {
   const UnitPriceMeasurement._();
   factory UnitPriceMeasurement({
-    required String measuredType,
-    required String quantityUnit,
+    String? measuredType,
+    String? quantityUnit,
     required double quantityValue,
-    required String referenceUnit,
+    String? referenceUnit,
     required int referenceValue,
   }) = _UnitPriceMeasurement;
 

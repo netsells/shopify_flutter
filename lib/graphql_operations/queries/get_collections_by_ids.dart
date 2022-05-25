@@ -16,4 +16,3 @@ query getCollectionsByIds($ids: [ID!]!){
     }
   }
 }''';
-
