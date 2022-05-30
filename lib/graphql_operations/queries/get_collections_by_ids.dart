@@ -13,7 +13,7 @@ query getCollectionsByIds($ids: [ID!]!){
       }
       title
       updatedAt
-      products(first: 1000) {
+      products(first: 250) {
         edges {
           cursor
           node {
