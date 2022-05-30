@@ -13,7 +13,7 @@ query getCollectionsByIds($ids: [ID!]!){
       }
       title
       updatedAt
-      products(first: 1000, sortKey: $sortKey, after: $cursor) {
+      products(first: 1000) {
         edges {
           cursor
           node {
