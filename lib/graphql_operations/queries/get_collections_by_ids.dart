@@ -13,7 +13,7 @@ query getCollectionsByIds($ids: [ID!]!, $cursor : String, $sortKey: ProductColle
       }
       title
       updatedAt
-            products(first: 10, sortKey: $sortKey, after: $cursor) {
+      products(first: 10, sortKey: $sortKey, after: $cursor) {
         edges {
           cursor
           node {
