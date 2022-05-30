@@ -1,5 +1,5 @@
 const String getCollectionsByIdsQuery = r'''
-query getCollectionsByIds($ids: [ID!]!){
+query getCollectionsByIds($ids: [ID!]!, $cursor : String, $sortKey: ProductCollectionSortKeys){
   nodes(ids: $ids) {
     ... on Collection {
       id
@@ -13,7 +13,7 @@ query getCollectionsByIds($ids: [ID!]!){
       }
       title
       updatedAt
-      products(first: 250) {
+            products(first: 10, sortKey: $sortKey, after: $cursor) {
         edges {
           cursor
           node {
@@ -100,7 +100,9 @@ query getCollectionsByIds($ids: [ID!]!){
             }
           }
         }
-      }
+      pageInfo{
+        hasNextPage
+        }}
     }
   }
 }''';
