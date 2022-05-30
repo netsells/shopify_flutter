@@ -19,6 +19,7 @@ query getCollectionsByIds($ids: [ID!]!, $sortKeyProduct: ProductCollectionSortKe
             variants(first: 250) {
               edges {
                 node {
+                  id
                   title
                   image {
                     altText
