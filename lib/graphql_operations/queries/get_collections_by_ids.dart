@@ -1,5 +1,5 @@
 const String getCollectionsByIdsQuery = r'''
-query getCollectionsByIds($ids: [ID!]!, $cursor : String, $sortKey: ProductCollectionSortKeys){
+query getCollectionsByIds($ids: [ID!]!, $cursor : String, $sortKeyProduct: ProductCollectionSortKeys){
   nodes(ids: $ids) {
     ... on Collection {
       id
@@ -13,49 +13,9 @@ query getCollectionsByIds($ids: [ID!]!, $cursor : String, $sortKey: ProductColle
       }
       title
       updatedAt
-      products(first: 10, sortKey: $sortKey, after: $cursor) {
+      products(first: 250, sortKey: $sortKeyProduct) {
         edges {
-          cursor
           node {
-          options(first: 50) {
-            id
-            name
-            values
-            } 
-            availableForSale
-            collections(first: 250) {
-              edges {
-                node {
-                  description
-                  descriptionHtml
-                  handle
-                  id
-                  title
-                  updatedAt
-                }
-              }
-            }
-            createdAt
-            description
-            descriptionHtml
-            handle
-            id
-            images(first: 250) {
-              edges {
-                node {
-                  altText
-                  id
-                  originalSrc
-                }
-              }
-            }
-            onlineStoreUrl
-            productType
-            publishedAt
-            tags
-            title
-            updatedAt
-            vendor
             variants(first: 250) {
               edges {
                 node {
@@ -82,27 +42,39 @@ query getCollectionsByIds($ids: [ID!]!, $cursor : String, $sortKey: ProductColle
                     value
                   }
                   availableForSale
-                  id
                   quantityAvailable
-                  unitPrice {
-                      amount
-                      currencyCode
-                  }
-                  unitPriceMeasurement {
-                      measuredType
-                      quantityUnit
-                      quantityValue
-                      referenceUnit
-                      referenceValue
-                  }
                 }
               }
             }
+            availableForSale
+            createdAt
+            description
+            descriptionHtml
+            handle
+            id
+            images(first: 10) {
+              edges {
+                node {
+                  altText
+                  id
+                  originalSrc
+                }
+              }
+            }
+            onlineStoreUrl
+            productType
+            publishedAt
+            tags
+            title
+            updatedAt
+            vendor
           }
+          cursor
         }
-      pageInfo{
-        hasNextPage
-        }}
+        pageInfo {
+          hasNextPage
+        }
+      }
     }
   }
 }''';
