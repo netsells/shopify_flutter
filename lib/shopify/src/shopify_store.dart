@@ -184,10 +184,18 @@ class ShopifyStore with ShopifyError {
 
   /// Returns a List of [Collection]
   Future<List<Collection>?> getCollectionsByIds(List<String> idList,
-      {bool deleteThisPartOfCache = false}) async {
+      {bool deleteThisPartOfCache = false,
+      SortKeyProductCollection sortKeyProductCollection =
+          SortKeyProductCollection.CREATED}) async {
+    String? cursor;
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
-          document: gql(getCollectionsByIdsQuery), variables: {'ids': idList});
+          document: gql(getCollectionsByIdsQuery),
+          variables: {
+            'ids': idList,
+            'cursor': cursor,
+            'sortKey': sortKeyProductCollection.parseToString()
+          });
       final QueryResult result = await _graphQLClient!.query(_options);
       checkForError(result);
       if (deleteThisPartOfCache) {
