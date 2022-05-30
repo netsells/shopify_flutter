@@ -100,6 +100,7 @@ query getCollectionsByIds($ids: [ID!]!){
             }
           }
         }
+      }
     }
   }
 }''';
