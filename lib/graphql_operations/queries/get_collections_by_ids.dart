@@ -1,5 +1,5 @@
 const String getCollectionsByIdsQuery = r'''
-query getCollectionsByIds($ids: [ID!]!, $cursor : String, $sortKeyProduct: ProductCollectionSortKeys){
+query getCollectionsByIds($ids: [ID!]!, $sortKeyProduct: ProductCollectionSortKeys){
   nodes(ids: $ids) {
     ... on Collection {
       id
