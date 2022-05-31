@@ -9,6 +9,13 @@ query($handle : String!){
         id
         items {
           id
+          items {
+            id
+            resourceId
+            tags
+            title
+            type
+          }
           resourceId
           tags
           title
