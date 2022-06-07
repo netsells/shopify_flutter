@@ -159,4 +159,26 @@ class ShopifyCustomer with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
   }
+
+  /// Updates the default address associated with the [addressId] from the customer to which [customerAccessToken] belongs to.
+  Future<void> customerDefaultAddressUpdate(
+      {String? customerAccessToken,
+      String? addressId,
+      bool deleteThisPartOfCache = false}) async {
+    final MutationOptions _options = MutationOptions(
+        document: gql(customerAddressUpdateMutation),
+        variables: {
+          'customerAccessToken': customerAccessToken,
+          'addressId': addressId
+        });
+    final QueryResult result = await _graphQLClient!.mutate(_options);
+    checkForError(
+      result,
+      key: 'customerDefaultAddressUpdate',
+      errorKey: 'customerUserErrors',
+    );
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+  }
 }
