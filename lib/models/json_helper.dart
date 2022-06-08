@@ -59,6 +59,12 @@ class JsonHelper {
               '${_simpleCurrencySymbols[currencyCode]} $formattedPrice';
         }
         break;
+      case "GBP":
+        {
+          currencyString =
+              '${_simpleCurrencySymbols[currencyCode]}$formattedPrice';
+        }
+        break;
 
       default:
         {

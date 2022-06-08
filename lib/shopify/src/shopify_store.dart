@@ -12,6 +12,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart'
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_collections_and_n_products_sorted.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor_within_collection.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_and_collections_on_query.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_on_query_after_cursor.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/collection/collections/collections.dart';
@@ -19,6 +20,7 @@ import 'package:flutter_simple_shopify/models/src/menu/menu.dart';
 import 'package:flutter_simple_shopify/models/src/product/metafield/metafield.dart';
 import 'package:flutter_simple_shopify/models/src/product/product.dart';
 import 'package:flutter_simple_shopify/models/src/product/products/products.dart';
+import 'package:flutter_simple_shopify/models/src/product/products_and_collections.dart';
 import 'package:flutter_simple_shopify/models/src/shop/shop.dart';
 import 'package:graphql/client.dart';
 
@@ -476,5 +478,40 @@ class ShopifyStore with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return Menu.fromJson(response);
+  }
+
+  /// Returns a List of [Product].
+  ///
+  /// Returns the first [limit] Products after the given [startCursor].
+  /// [limit] has to be in the range of 0 and 250.
+  Future<ProductsAndCollections> getXProductsAndCollectionsOnQuery(
+      int limit, String query,
+      {bool deleteThisPartOfCache = false,
+      bool reverse = false,
+      SortKeyProduct sortKeyProduct = SortKeyProduct.TITLE,
+      int? collectionLimit,
+      SortKeyCollection sortKeyCollection = SortKeyCollection.TITLE,
+      String? productStartCursor}) async {
+    final WatchQueryOptions _options = WatchQueryOptions(
+        document: gql(getXProductsAndCollectionsOnQueryQuery),
+        variables: {
+          'productLimit': limit,
+          'collectionLimit': collectionLimit ?? limit,
+          'query': query,
+          'sortKeyProduct': sortKeyProduct.parseToString(),
+          'sortKeyCollection': sortKeyCollection.parseToString(),
+          if (productStartCursor != null) 'productCursor': productStartCursor,
+          'reverse': reverse,
+        });
+    final QueryResult result = await _graphQLClient!.query(_options);
+    checkForError(result);
+
+    final productsAndCollections =
+        ProductsAndCollections.fromGraphJson(result.data ?? const {});
+
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+    return productsAndCollections;
   }
 }
