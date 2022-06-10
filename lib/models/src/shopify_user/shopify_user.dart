@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/models/src/shopify_user/address/address.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'addresses/addresses.dart';
@@ -18,6 +19,7 @@ class ShopifyUser with _$ShopifyUser {
     String? lastName,
     String? phone,
     List<String>? tags,
+    Address? defaultAddress,
     LastIncompleteCheckout? lastIncompleteCheckout,
   }) = _ShopifyUser;
 

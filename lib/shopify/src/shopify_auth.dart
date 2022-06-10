@@ -214,9 +214,13 @@ class ShopifyAuth with ShopifyError {
   }
 
   /// Returns the currently signed-in [ShopifyUser] or [null] if there is none.
-  Future<ShopifyUser?> currentUser({bool deleteThisPartOfCache = false}) async {
+  Future<ShopifyUser?> currentUser({
+    bool deleteThisPartOfCache = false,
+    bool refresh = false,
+  }) async {
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         document: gql(getCustomerQuery),
+        fetchPolicy: refresh ? FetchPolicy.networkOnly : null,
         variables: {'customerAccessToken': await currentCustomerAccessToken});
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_getCustomer.asRequest, data: {});
