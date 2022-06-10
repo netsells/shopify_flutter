@@ -24,6 +24,7 @@ class ShopifyUser with _$ShopifyUser {
   }) = _ShopifyUser;
 
   static ShopifyUser fromGraphJson(Map<String, dynamic> json) {
+    final addressJson = json['defaultAddress'];
     return ShopifyUser(
       address: Addresses.fromGraphJson(json['addresses'] ?? const {}),
       createdAt: json['createdAt'],
@@ -34,7 +35,8 @@ class ShopifyUser with _$ShopifyUser {
       lastName: json['lastName'],
       phone: json['phone'],
       tags: _getTagList((json)),
-      defaultAddress: Address.fromJson(json['defaultAddress']),
+      defaultAddress:
+          addressJson != null ? Address.fromJson(addressJson) : null,
       lastIncompleteCheckout: LastIncompleteCheckout.fromJson(
           json['lastIncompleteCheckout'] ?? const {}),
     );
