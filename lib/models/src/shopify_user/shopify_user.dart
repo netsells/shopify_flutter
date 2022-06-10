@@ -34,6 +34,7 @@ class ShopifyUser with _$ShopifyUser {
       lastName: json['lastName'],
       phone: json['phone'],
       tags: _getTagList((json)),
+      defaultAddress: Address.fromJson(json['defaultAddress']),
       lastIncompleteCheckout: LastIncompleteCheckout.fromJson(
           json['lastIncompleteCheckout'] ?? const {}),
     );
