@@ -67,6 +67,11 @@ query($ids : [ID!]!){
         }
       }
       onlineStoreUrl
+            options{
+              id
+              name
+              values
+            }
       productType
       publishedAt
       tags

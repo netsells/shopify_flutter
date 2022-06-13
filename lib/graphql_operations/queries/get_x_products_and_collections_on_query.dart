@@ -79,6 +79,11 @@ query( $productCursor: String, $productLimit : Int, $collectionLimit : Int, $sor
                 }
               }
               onlineStoreUrl
+              options{
+                id
+                name
+                values
+              }
               productType
               publishedAt
               tags

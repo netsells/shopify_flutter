@@ -65,6 +65,11 @@ query($cursor : String, $x : Int, $reverse: Boolean, $sortKey: ProductSortKeys){
         handle
         id
         onlineStoreUrl
+            options{
+              id
+              name
+              values
+            }
         productType
         publishedAt
         tags

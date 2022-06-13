@@ -73,6 +73,11 @@ query($cursor : String, $metafieldsNamespace : String){
         }
         createdAt
         description
+            options{
+              id
+              name
+              values
+            }
         descriptionHtml
         handle
         id

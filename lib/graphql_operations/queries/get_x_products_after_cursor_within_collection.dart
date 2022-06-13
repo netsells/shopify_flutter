@@ -50,6 +50,11 @@ query($id : ID!, $cursor : String, $limit : Int, $sortKey : ProductCollectionSor
               }
             }
             onlineStoreUrl
+            options{
+              id
+              name
+              values
+            }
             productType
             publishedAt
             tags

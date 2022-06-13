@@ -75,6 +75,11 @@ query getFeaturedCollectionQuery($query: String!){
                 }
               }
               onlineStoreUrl
+              options{
+                id
+                name
+                values
+              }
               productType
               publishedAt
               tags

@@ -78,6 +78,11 @@ query($cursor: String, $sortKey: CollectionSortKeys, $reverse: Boolean){
                   }
                 }
               }
+              options{
+                id
+                name
+                values
+              }
               onlineStoreUrl
               productType
               publishedAt
