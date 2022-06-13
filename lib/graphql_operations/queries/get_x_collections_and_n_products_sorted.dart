@@ -67,6 +67,11 @@ query($cursor: String, $sortKey: CollectionSortKeys, $sortKeyProduct: ProductCol
                 }
               }
               onlineStoreUrl
+              options{
+                id
+                name
+                values
+              }
               productType
               publishedAt
               tags

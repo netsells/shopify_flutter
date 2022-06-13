@@ -62,6 +62,11 @@ query getCollectionsByIds($ids: [ID!]!, $sortKeyProduct: ProductCollectionSortKe
                 }
               }
             }
+            options{
+              id
+              name
+              values
+            }
             onlineStoreUrl
             productType
             publishedAt
