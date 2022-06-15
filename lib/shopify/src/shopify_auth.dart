@@ -225,7 +225,7 @@ class ShopifyAuth with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_getCustomer.asRequest, data: {});
     }
-    if (_shopifyUser.containsKey(ShopifyConfig.storeUrl)) {
+    if (_shopifyUser.containsKey(ShopifyConfig.storeUrl) && !refresh) {
       return _shopifyUser[ShopifyConfig.storeUrl];
       //TODO look into shared prefs (@adam)
     } else if (await currentCustomerAccessToken != null) {
