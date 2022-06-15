@@ -27,7 +27,6 @@ class Order with _$Order {
     required PriceV2 totalShippingPriceV2,
     required PriceV2 totalTaxV2,
     required String displayStatus,
-    required String createdAt,
     PriceV2? totalRefundedV2,
     String? phone,
     String? cursor,
@@ -58,8 +57,7 @@ class Order with _$Order {
             (json['node'] ?? const {})['totalShippingPriceV2'] ?? const {}),
         totalTaxV2: PriceV2.fromJson(
             (json['node'] ?? const {})['totalTaxV2'] ?? const {}),
-        displayStatus: (json['node'] ?? const {})['displayFulfillmentStatus'],
-        createdAt: (json['node'] ?? const {})['createdAt'],
+        displayStatus: (json['node'] ?? const {})['fulfillmentStatus'],
         cursor: json['cursor']);
   }
 

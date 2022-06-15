@@ -35,7 +35,6 @@ mixin _$Order {
   PriceV2 get totalShippingPriceV2 => throw _privateConstructorUsedError;
   PriceV2 get totalTaxV2 => throw _privateConstructorUsedError;
   String get displayStatus => throw _privateConstructorUsedError;
-  String get createdAt => throw _privateConstructorUsedError;
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
@@ -65,7 +64,6 @@ abstract class $OrderCopyWith<$Res> {
       PriceV2 totalShippingPriceV2,
       PriceV2 totalTaxV2,
       String displayStatus,
-      String createdAt,
       PriceV2? totalRefundedV2,
       String? phone,
       String? cursor});
@@ -104,7 +102,6 @@ class _$OrderCopyWithImpl<$Res> implements $OrderCopyWith<$Res> {
     Object? totalShippingPriceV2 = freezed,
     Object? totalTaxV2 = freezed,
     Object? displayStatus = freezed,
-    Object? createdAt = freezed,
     Object? totalRefundedV2 = freezed,
     Object? phone = freezed,
     Object? cursor = freezed,
@@ -169,10 +166,6 @@ class _$OrderCopyWithImpl<$Res> implements $OrderCopyWith<$Res> {
       displayStatus: displayStatus == freezed
           ? _value.displayStatus
           : displayStatus // ignore: cast_nullable_to_non_nullable
-              as String,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
               as String,
       totalRefundedV2: totalRefundedV2 == freezed
           ? _value.totalRefundedV2
@@ -264,7 +257,6 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       PriceV2 totalShippingPriceV2,
       PriceV2 totalTaxV2,
       String displayStatus,
-      String createdAt,
       PriceV2? totalRefundedV2,
       String? phone,
       String? cursor});
@@ -311,7 +303,6 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
     Object? totalShippingPriceV2 = freezed,
     Object? totalTaxV2 = freezed,
     Object? displayStatus = freezed,
-    Object? createdAt = freezed,
     Object? totalRefundedV2 = freezed,
     Object? phone = freezed,
     Object? cursor = freezed,
@@ -377,10 +368,6 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
           ? _value.displayStatus
           : displayStatus // ignore: cast_nullable_to_non_nullable
               as String,
-      createdAt: createdAt == freezed
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
       totalRefundedV2: totalRefundedV2 == freezed
           ? _value.totalRefundedV2
           : totalRefundedV2 // ignore: cast_nullable_to_non_nullable
@@ -416,7 +403,6 @@ class _$_Order extends _Order {
       required this.totalShippingPriceV2,
       required this.totalTaxV2,
       required this.displayStatus,
-      required this.createdAt,
       this.totalRefundedV2,
       this.phone,
       this.cursor})
@@ -456,8 +442,6 @@ class _$_Order extends _Order {
   @override
   final String displayStatus;
   @override
-  final String createdAt;
-  @override
   final PriceV2? totalRefundedV2;
   @override
   final String? phone;
@@ -466,7 +450,7 @@ class _$_Order extends _Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, displayStatus: $displayStatus, createdAt: $createdAt, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor)';
+    return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, displayStatus: $displayStatus, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor)';
   }
 
   @override
@@ -499,7 +483,6 @@ class _$_Order extends _Order {
                 .equals(other.totalTaxV2, totalTaxV2) &&
             const DeepCollectionEquality()
                 .equals(other.displayStatus, displayStatus) &&
-            const DeepCollectionEquality().equals(other.createdAt, createdAt) &&
             const DeepCollectionEquality()
                 .equals(other.totalRefundedV2, totalRefundedV2) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
@@ -508,28 +491,26 @@ class _$_Order extends _Order {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hashAll([
-        runtimeType,
-        const DeepCollectionEquality().hash(id),
-        const DeepCollectionEquality().hash(email),
-        const DeepCollectionEquality().hash(currencyCode),
-        const DeepCollectionEquality().hash(customerUrl),
-        const DeepCollectionEquality().hash(lineItems),
-        const DeepCollectionEquality().hash(name),
-        const DeepCollectionEquality().hash(orderNumber),
-        const DeepCollectionEquality().hash(processedAt),
-        const DeepCollectionEquality().hash(shippingAddress),
-        const DeepCollectionEquality().hash(statusUrl),
-        const DeepCollectionEquality().hash(subtotalPriceV2),
-        const DeepCollectionEquality().hash(totalPriceV2),
-        const DeepCollectionEquality().hash(totalShippingPriceV2),
-        const DeepCollectionEquality().hash(totalTaxV2),
-        const DeepCollectionEquality().hash(displayStatus),
-        const DeepCollectionEquality().hash(createdAt),
-        const DeepCollectionEquality().hash(totalRefundedV2),
-        const DeepCollectionEquality().hash(phone),
-        const DeepCollectionEquality().hash(cursor)
-      ]);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(email),
+      const DeepCollectionEquality().hash(currencyCode),
+      const DeepCollectionEquality().hash(customerUrl),
+      const DeepCollectionEquality().hash(lineItems),
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(orderNumber),
+      const DeepCollectionEquality().hash(processedAt),
+      const DeepCollectionEquality().hash(shippingAddress),
+      const DeepCollectionEquality().hash(statusUrl),
+      const DeepCollectionEquality().hash(subtotalPriceV2),
+      const DeepCollectionEquality().hash(totalPriceV2),
+      const DeepCollectionEquality().hash(totalShippingPriceV2),
+      const DeepCollectionEquality().hash(totalTaxV2),
+      const DeepCollectionEquality().hash(displayStatus),
+      const DeepCollectionEquality().hash(totalRefundedV2),
+      const DeepCollectionEquality().hash(phone),
+      const DeepCollectionEquality().hash(cursor));
 
   @JsonKey(ignore: true)
   @override
@@ -559,7 +540,6 @@ abstract class _Order extends Order {
       required final PriceV2 totalShippingPriceV2,
       required final PriceV2 totalTaxV2,
       required final String displayStatus,
-      required final String createdAt,
       final PriceV2? totalRefundedV2,
       final String? phone,
       final String? cursor}) = _$_Order;
@@ -597,8 +577,6 @@ abstract class _Order extends Order {
   PriceV2 get totalTaxV2 => throw _privateConstructorUsedError;
   @override
   String get displayStatus => throw _privateConstructorUsedError;
-  @override
-  String get createdAt => throw _privateConstructorUsedError;
   @override
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   @override
