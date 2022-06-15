@@ -26,6 +26,8 @@ class Order with _$Order {
     required PriceV2 totalPriceV2,
     required PriceV2 totalShippingPriceV2,
     required PriceV2 totalTaxV2,
+    required String displayStatus,
+    required String createdAt,
     PriceV2? totalRefundedV2,
     String? phone,
     String? cursor,
@@ -37,7 +39,7 @@ class Order with _$Order {
         email: (json['node'] ?? const {})['email'],
         currencyCode: (json['node'] ?? const {})['currencyCode'],
         customerUrl: (json['node'] ?? const {})['customerUrl'],
-        lineItems: LineItemsOrder.fromJson(
+        lineItems: LineItemsOrder.fromGraphJson(
             (json['node'] ?? const {})['lineItems'] ?? const {}),
         name: (json['node'] ?? const {})['name'],
         orderNumber: (json['node'] ?? const {})['orderNumber'],
@@ -56,6 +58,8 @@ class Order with _$Order {
             (json['node'] ?? const {})['totalShippingPriceV2'] ?? const {}),
         totalTaxV2: PriceV2.fromJson(
             (json['node'] ?? const {})['totalTaxV2'] ?? const {}),
+        displayStatus: (json['node'] ?? const {})['displayFulfillmentStatus'],
+        createdAt: (json['node'] ?? const {})['createdAt'],
         cursor: json['cursor']);
   }
 

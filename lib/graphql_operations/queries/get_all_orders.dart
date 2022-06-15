@@ -96,6 +96,8 @@ customer(customerAccessToken: $accessToken) {
             amount
             currencyCode
           }
+          displayFulfillmentStatus
+          createdAt
         }
         cursor
       }
