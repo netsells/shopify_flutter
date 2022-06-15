@@ -218,6 +218,7 @@ class ShopifyAuth with ShopifyError {
     bool deleteThisPartOfCache = false,
     bool refresh = false,
   }) async {
+    final token = await currentCustomerAccessToken;
     final WatchQueryOptions _getCustomer = WatchQueryOptions(
         document: gql(getCustomerQuery),
         fetchPolicy: refresh ? FetchPolicy.networkOnly : null,
@@ -228,11 +229,12 @@ class ShopifyAuth with ShopifyError {
     if (_shopifyUser.containsKey(ShopifyConfig.storeUrl)) {
       return _shopifyUser[ShopifyConfig.storeUrl];
       //TODO look into shared prefs (@adam)
-    } else if (await currentCustomerAccessToken != null) {
+    } else if (token != null) {
       final QueryResult result = (await _graphQLClient!.query(_getCustomer));
       checkForError(result);
       ShopifyUser user = ShopifyUser.fromGraphJson(
           (result.data ?? const {})['customer'] ?? const {});
+      if (refresh) await _setShopifyUser(token, user);
       return user;
     } else {
       return null;
