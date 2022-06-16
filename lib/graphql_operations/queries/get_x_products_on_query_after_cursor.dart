@@ -15,11 +15,6 @@ query( $cursor: String, $limit : Int, $sortKey : ProductSortKeys, $query: String
         description
         descriptionHtml
         onlineStoreUrl
-            options{
-              id
-              name
-              values
-            }
         productType
         publishedAt
         tags
