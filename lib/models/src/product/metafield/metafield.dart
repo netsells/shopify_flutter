@@ -12,7 +12,7 @@ class Metafield with _$Metafield {
     required String namespace,
     required String key,
     required String value,
-    required String valueType,
+    required String type,
     @Default('') String description,
   }) = _Metafield;
 
@@ -22,7 +22,7 @@ class Metafield with _$Metafield {
         namespace: (json['node'] ?? const {})['namespace'],
         key: (json['node'] ?? const {})['key'],
         value: (json['node'] ?? const {})['value'],
-        valueType: (json['node'] ?? const {})['valueType'],
+        type: (json['node'] ?? const {})['type'],
         description: (json['node'] ?? const {})['description']);
   }
 
