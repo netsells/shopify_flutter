@@ -453,7 +453,7 @@ class ShopifyStore with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return (result.data!['productByHandle']['metafields']['edges']
-            as List<Object>)
+            as List<Object?>)
         .map((e) => Metafield.fromGraphJson(e as Map<String, dynamic>))
         .toList();
   }
