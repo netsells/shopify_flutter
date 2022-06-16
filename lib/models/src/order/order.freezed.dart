@@ -34,9 +34,12 @@ mixin _$Order {
   PriceV2 get totalPriceV2 => throw _privateConstructorUsedError;
   PriceV2 get totalShippingPriceV2 => throw _privateConstructorUsedError;
   PriceV2 get totalTaxV2 => throw _privateConstructorUsedError;
+  String get displayStatus => throw _privateConstructorUsedError;
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   String? get phone => throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
+  List<Fulfillment> get successfulFulfillments =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -62,9 +65,11 @@ abstract class $OrderCopyWith<$Res> {
       PriceV2 totalPriceV2,
       PriceV2 totalShippingPriceV2,
       PriceV2 totalTaxV2,
+      String displayStatus,
       PriceV2? totalRefundedV2,
       String? phone,
-      String? cursor});
+      String? cursor,
+      List<Fulfillment> successfulFulfillments});
 
   $LineItemsOrderCopyWith<$Res> get lineItems;
   $ShippingAddressCopyWith<$Res> get shippingAddress;
@@ -99,9 +104,11 @@ class _$OrderCopyWithImpl<$Res> implements $OrderCopyWith<$Res> {
     Object? totalPriceV2 = freezed,
     Object? totalShippingPriceV2 = freezed,
     Object? totalTaxV2 = freezed,
+    Object? displayStatus = freezed,
     Object? totalRefundedV2 = freezed,
     Object? phone = freezed,
     Object? cursor = freezed,
+    Object? successfulFulfillments = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -160,6 +167,10 @@ class _$OrderCopyWithImpl<$Res> implements $OrderCopyWith<$Res> {
           ? _value.totalTaxV2
           : totalTaxV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
+      displayStatus: displayStatus == freezed
+          ? _value.displayStatus
+          : displayStatus // ignore: cast_nullable_to_non_nullable
+              as String,
       totalRefundedV2: totalRefundedV2 == freezed
           ? _value.totalRefundedV2
           : totalRefundedV2 // ignore: cast_nullable_to_non_nullable
@@ -172,6 +183,10 @@ class _$OrderCopyWithImpl<$Res> implements $OrderCopyWith<$Res> {
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
+      successfulFulfillments: successfulFulfillments == freezed
+          ? _value.successfulFulfillments
+          : successfulFulfillments // ignore: cast_nullable_to_non_nullable
+              as List<Fulfillment>,
     ));
   }
 
@@ -249,9 +264,11 @@ abstract class _$$_OrderCopyWith<$Res> implements $OrderCopyWith<$Res> {
       PriceV2 totalPriceV2,
       PriceV2 totalShippingPriceV2,
       PriceV2 totalTaxV2,
+      String displayStatus,
       PriceV2? totalRefundedV2,
       String? phone,
-      String? cursor});
+      String? cursor,
+      List<Fulfillment> successfulFulfillments});
 
   @override
   $LineItemsOrderCopyWith<$Res> get lineItems;
@@ -294,9 +311,11 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
     Object? totalPriceV2 = freezed,
     Object? totalShippingPriceV2 = freezed,
     Object? totalTaxV2 = freezed,
+    Object? displayStatus = freezed,
     Object? totalRefundedV2 = freezed,
     Object? phone = freezed,
     Object? cursor = freezed,
+    Object? successfulFulfillments = freezed,
   }) {
     return _then(_$_Order(
       id: id == freezed
@@ -355,6 +374,10 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
           ? _value.totalTaxV2
           : totalTaxV2 // ignore: cast_nullable_to_non_nullable
               as PriceV2,
+      displayStatus: displayStatus == freezed
+          ? _value.displayStatus
+          : displayStatus // ignore: cast_nullable_to_non_nullable
+              as String,
       totalRefundedV2: totalRefundedV2 == freezed
           ? _value.totalRefundedV2
           : totalRefundedV2 // ignore: cast_nullable_to_non_nullable
@@ -367,6 +390,10 @@ class __$$_OrderCopyWithImpl<$Res> extends _$OrderCopyWithImpl<$Res>
           ? _value.cursor
           : cursor // ignore: cast_nullable_to_non_nullable
               as String?,
+      successfulFulfillments: successfulFulfillments == freezed
+          ? _value._successfulFulfillments
+          : successfulFulfillments // ignore: cast_nullable_to_non_nullable
+              as List<Fulfillment>,
     ));
   }
 }
@@ -389,10 +416,13 @@ class _$_Order extends _Order {
       required this.totalPriceV2,
       required this.totalShippingPriceV2,
       required this.totalTaxV2,
+      required this.displayStatus,
       this.totalRefundedV2,
       this.phone,
-      this.cursor})
-      : super._();
+      this.cursor,
+      required final List<Fulfillment> successfulFulfillments})
+      : _successfulFulfillments = successfulFulfillments,
+        super._();
 
   factory _$_Order.fromJson(Map<String, dynamic> json) =>
       _$$_OrderFromJson(json);
@@ -426,15 +456,23 @@ class _$_Order extends _Order {
   @override
   final PriceV2 totalTaxV2;
   @override
+  final String displayStatus;
+  @override
   final PriceV2? totalRefundedV2;
   @override
   final String? phone;
   @override
   final String? cursor;
+  final List<Fulfillment> _successfulFulfillments;
+  @override
+  List<Fulfillment> get successfulFulfillments {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_successfulFulfillments);
+  }
 
   @override
   String toString() {
-    return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor)';
+    return 'Order(id: $id, email: $email, currencyCode: $currencyCode, customerUrl: $customerUrl, lineItems: $lineItems, name: $name, orderNumber: $orderNumber, processedAt: $processedAt, shippingAddress: $shippingAddress, statusUrl: $statusUrl, subtotalPriceV2: $subtotalPriceV2, totalPriceV2: $totalPriceV2, totalShippingPriceV2: $totalShippingPriceV2, totalTaxV2: $totalTaxV2, displayStatus: $displayStatus, totalRefundedV2: $totalRefundedV2, phone: $phone, cursor: $cursor, successfulFulfillments: $successfulFulfillments)';
   }
 
   @override
@@ -466,32 +504,39 @@ class _$_Order extends _Order {
             const DeepCollectionEquality()
                 .equals(other.totalTaxV2, totalTaxV2) &&
             const DeepCollectionEquality()
+                .equals(other.displayStatus, displayStatus) &&
+            const DeepCollectionEquality()
                 .equals(other.totalRefundedV2, totalRefundedV2) &&
             const DeepCollectionEquality().equals(other.phone, phone) &&
-            const DeepCollectionEquality().equals(other.cursor, cursor));
+            const DeepCollectionEquality().equals(other.cursor, cursor) &&
+            const DeepCollectionEquality().equals(
+                other._successfulFulfillments, _successfulFulfillments));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(email),
-      const DeepCollectionEquality().hash(currencyCode),
-      const DeepCollectionEquality().hash(customerUrl),
-      const DeepCollectionEquality().hash(lineItems),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(orderNumber),
-      const DeepCollectionEquality().hash(processedAt),
-      const DeepCollectionEquality().hash(shippingAddress),
-      const DeepCollectionEquality().hash(statusUrl),
-      const DeepCollectionEquality().hash(subtotalPriceV2),
-      const DeepCollectionEquality().hash(totalPriceV2),
-      const DeepCollectionEquality().hash(totalShippingPriceV2),
-      const DeepCollectionEquality().hash(totalTaxV2),
-      const DeepCollectionEquality().hash(totalRefundedV2),
-      const DeepCollectionEquality().hash(phone),
-      const DeepCollectionEquality().hash(cursor));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        const DeepCollectionEquality().hash(id),
+        const DeepCollectionEquality().hash(email),
+        const DeepCollectionEquality().hash(currencyCode),
+        const DeepCollectionEquality().hash(customerUrl),
+        const DeepCollectionEquality().hash(lineItems),
+        const DeepCollectionEquality().hash(name),
+        const DeepCollectionEquality().hash(orderNumber),
+        const DeepCollectionEquality().hash(processedAt),
+        const DeepCollectionEquality().hash(shippingAddress),
+        const DeepCollectionEquality().hash(statusUrl),
+        const DeepCollectionEquality().hash(subtotalPriceV2),
+        const DeepCollectionEquality().hash(totalPriceV2),
+        const DeepCollectionEquality().hash(totalShippingPriceV2),
+        const DeepCollectionEquality().hash(totalTaxV2),
+        const DeepCollectionEquality().hash(displayStatus),
+        const DeepCollectionEquality().hash(totalRefundedV2),
+        const DeepCollectionEquality().hash(phone),
+        const DeepCollectionEquality().hash(cursor),
+        const DeepCollectionEquality().hash(_successfulFulfillments)
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -520,9 +565,11 @@ abstract class _Order extends Order {
       required final PriceV2 totalPriceV2,
       required final PriceV2 totalShippingPriceV2,
       required final PriceV2 totalTaxV2,
+      required final String displayStatus,
       final PriceV2? totalRefundedV2,
       final String? phone,
-      final String? cursor}) = _$_Order;
+      final String? cursor,
+      required final List<Fulfillment> successfulFulfillments}) = _$_Order;
   _Order._() : super._();
 
   factory _Order.fromJson(Map<String, dynamic> json) = _$_Order.fromJson;
@@ -556,11 +603,16 @@ abstract class _Order extends Order {
   @override
   PriceV2 get totalTaxV2 => throw _privateConstructorUsedError;
   @override
+  String get displayStatus => throw _privateConstructorUsedError;
+  @override
   PriceV2? get totalRefundedV2 => throw _privateConstructorUsedError;
   @override
   String? get phone => throw _privateConstructorUsedError;
   @override
   String? get cursor => throw _privateConstructorUsedError;
+  @override
+  List<Fulfillment> get successfulFulfillments =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_OrderCopyWith<_$_Order> get copyWith =>

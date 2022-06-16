@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/models/src/order/fulfillment/fulfillment.dart';
 import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -26,18 +27,30 @@ class Order with _$Order {
     required PriceV2 totalPriceV2,
     required PriceV2 totalShippingPriceV2,
     required PriceV2 totalTaxV2,
+    required String displayStatus,
     PriceV2? totalRefundedV2,
     String? phone,
     String? cursor,
+    required List<Fulfillment> successfulFulfillments,
   }) = _Order;
 
   static Order fromGraphJson(Map<String, dynamic> json) {
+    final fulfillmentJson =
+        (json['node'] ?? const {})['successfulFulfillments'];
+    List<Fulfillment> fulfillments;
+    if (fulfillmentJson != null) {
+      fulfillments = (fulfillmentJson as List<dynamic>)
+          .map((e) => Fulfillment.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } else {
+      fulfillments = [];
+    }
     return Order(
         id: (json['node'] ?? const {})['id'],
         email: (json['node'] ?? const {})['email'],
         currencyCode: (json['node'] ?? const {})['currencyCode'],
         customerUrl: (json['node'] ?? const {})['customerUrl'],
-        lineItems: LineItemsOrder.fromJson(
+        lineItems: LineItemsOrder.fromGraphJson(
             (json['node'] ?? const {})['lineItems'] ?? const {}),
         name: (json['node'] ?? const {})['name'],
         orderNumber: (json['node'] ?? const {})['orderNumber'],
@@ -56,6 +69,8 @@ class Order with _$Order {
             (json['node'] ?? const {})['totalShippingPriceV2'] ?? const {}),
         totalTaxV2: PriceV2.fromJson(
             (json['node'] ?? const {})['totalTaxV2'] ?? const {}),
+        displayStatus: (json['node'] ?? const {})['fulfillmentStatus'],
+        successfulFulfillments: fulfillments,
         cursor: json['cursor']);
   }
 
