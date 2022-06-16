@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/models/src/order/fulfillment/fulfillment.dart';
 import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -30,9 +31,20 @@ class Order with _$Order {
     PriceV2? totalRefundedV2,
     String? phone,
     String? cursor,
+    required List<Fulfillment> successfulFulfillments,
   }) = _Order;
 
   static Order fromGraphJson(Map<String, dynamic> json) {
+    final fulfillmentJson =
+        (json['node'] ?? const {})['successfulFulfillments'];
+    List<Fulfillment> fulfillments;
+    if (fulfillmentJson != null) {
+      fulfillments = (fulfillmentJson as List<dynamic>)
+          .map((e) => Fulfillment.fromJson(e as Map<String, dynamic>))
+          .toList();
+    } else {
+      fulfillments = [];
+    }
     return Order(
         id: (json['node'] ?? const {})['id'],
         email: (json['node'] ?? const {})['email'],
@@ -58,6 +70,7 @@ class Order with _$Order {
         totalTaxV2: PriceV2.fromJson(
             (json['node'] ?? const {})['totalTaxV2'] ?? const {}),
         displayStatus: (json['node'] ?? const {})['fulfillmentStatus'],
+        successfulFulfillments: fulfillments,
         cursor: json['cursor']);
   }
 
