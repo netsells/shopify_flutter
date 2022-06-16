@@ -97,6 +97,13 @@ customer(customerAccessToken: $accessToken) {
             currencyCode
           }
           fulfillmentStatus
+          successfulFulfillments(first: 20){
+            trackingCompany
+            trackingInfo(first: 20){
+              number
+              url
+            }
+          }
         }
         cursor
       }
