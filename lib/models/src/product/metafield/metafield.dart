@@ -23,7 +23,7 @@ class Metafield with _$Metafield {
         key: (json['node'] ?? const {})['key'],
         value: (json['node'] ?? const {})['value'],
         type: (json['node'] ?? const {})['type'],
-        description: (json['node'] ?? const {})['description']);
+        description: (json['node'] ?? const {})['description'] ?? '');
   }
 
   factory Metafield.fromJson(Map<String, dynamic> json) =>
