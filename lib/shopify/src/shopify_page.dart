@@ -56,7 +56,7 @@ class ShopifyPage with ShopifyError {
     );
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
-    var response = result.data!['pageByHandle'];
+    var response = result.data!['page'];
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
