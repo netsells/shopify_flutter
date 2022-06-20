@@ -27,7 +27,7 @@ mixin _$Page {
   String get id => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   DateTime get updatedAt => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +46,7 @@ abstract class $PageCopyWith<$Res> {
       String id,
       String title,
       DateTime updatedAt,
-      String url});
+      String? url});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class _$PageCopyWithImpl<$Res> implements $PageCopyWith<$Res> {
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -118,7 +118,7 @@ abstract class _$$_PageCopyWith<$Res> implements $PageCopyWith<$Res> {
       String id,
       String title,
       DateTime updatedAt,
-      String url});
+      String? url});
 }
 
 /// @nodoc
@@ -173,7 +173,7 @@ class __$$_PageCopyWithImpl<$Res> extends _$PageCopyWithImpl<$Res>
       url: url == freezed
           ? _value.url
           : url // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -189,7 +189,7 @@ class _$_Page extends _Page {
       required this.id,
       required this.title,
       required this.updatedAt,
-      required this.url})
+      this.url})
       : super._();
 
   factory _$_Page.fromJson(Map<String, dynamic> json) => _$$_PageFromJson(json);
@@ -209,7 +209,7 @@ class _$_Page extends _Page {
   @override
   final DateTime updatedAt;
   @override
-  final String url;
+  final String? url;
 
   @override
   String toString() {
@@ -265,7 +265,7 @@ abstract class _Page extends Page {
       required final String id,
       required final String title,
       required final DateTime updatedAt,
-      required final String url}) = _$_Page;
+      final String? url}) = _$_Page;
   _Page._() : super._();
 
   factory _Page.fromJson(Map<String, dynamic> json) = _$_Page.fromJson;
@@ -285,7 +285,7 @@ abstract class _Page extends Page {
   @override
   DateTime get updatedAt => throw _privateConstructorUsedError;
   @override
-  String get url => throw _privateConstructorUsedError;
+  String? get url => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_PageCopyWith<_$_Page> get copyWith => throw _privateConstructorUsedError;

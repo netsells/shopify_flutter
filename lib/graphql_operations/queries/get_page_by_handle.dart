@@ -1,10 +1,10 @@
 const String getPageByHandleQuery = r'''
 query($handle : String!){
-  pageByHandle(handle: $handle) {
+  page(handle: $handle) {
     id
     handle
     title
-    url
+    onlineStoreUrl
     body
     bodySummary
     createdAt
