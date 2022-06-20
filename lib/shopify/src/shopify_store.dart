@@ -6,6 +6,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_produc
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_menu_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_metafileds_from_product.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_recommendations.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart';
@@ -435,6 +436,23 @@ class ShopifyStore with ShopifyError {
     }
     return Products.fromGraphJson((result.data ?? const {})['products'])
         .productList;
+  }
+
+  /// Returns a [Product] by its [productHandle].
+  ///
+  /// Gets a [Product].
+  Future<Product> getProductByHandle(String productHandle,
+      {bool deleteThisPartOfCache = false}) async {
+    final WatchQueryOptions _options = WatchQueryOptions(
+        document: gql(getProductByHandleQuery),
+        variables: {'handle': productHandle});
+    final QueryResult result =
+        await ShopifyConfig.graphQLClient!.query(_options);
+    checkForError(result);
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+    return Product.fromGraphJson((result.data ?? const {})['product']);
   }
 
   /// Returns a List of [Metafield].
