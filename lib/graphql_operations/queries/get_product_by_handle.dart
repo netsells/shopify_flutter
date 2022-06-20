@@ -2,12 +2,12 @@ const String getProductByHandleQuery = r'''
 query($handle: String!, $namespace: String!) {
   product(handle: $handle) {
     options(first: 50) {
-          id
-          name
-          values
-        }
-        variants(first: 250) {
-          edges {
+      id
+      name
+      values
+    }
+    variants(first: 250) {
+      edges {
             node {
               id
               title
@@ -55,11 +55,6 @@ query($handle: String!, $namespace: String!) {
         }
         createdAt
         description
-            options{
-              id
-              name
-              values
-            }
         descriptionHtml
         handle
         id
