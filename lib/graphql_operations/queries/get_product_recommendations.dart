@@ -17,11 +17,6 @@ query getProductRecommentationsQuery($id: ID!){
       }
     }
     onlineStoreUrl
-    options{
-      id
-      name
-      values
-    }
     options(first: 50) {
       id
       name
