@@ -1,5 +1,5 @@
 const String getProductByHandleQuery = r'''
-query($handle: String!, $namespace: String!) {
+query($handle: String!) {
   product(handle: $handle) {
     options(first: 50) {
       id
