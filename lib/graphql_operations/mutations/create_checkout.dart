@@ -62,10 +62,6 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
                 key
                 value
             }
-            customAttributes {
-                key
-                value
-            }
              discountAllocations {
               allocatedAmount {
                 amount
@@ -92,6 +88,7 @@ mutation checkoutCreate($input: CheckoutCreateInput!) {
               weightUnit
               availableForSale
               sku
+              quantityAvailable
               requiresShipping
             }
           }
