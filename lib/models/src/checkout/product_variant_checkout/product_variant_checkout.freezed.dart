@@ -27,7 +27,7 @@ mixin _$ProductVariantCheckout {
   String get sku => throw _privateConstructorUsedError;
   bool get requiresShipping => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
-  int get quantityAvailable => throw _privateConstructorUsedError;
+  int? get quantityAvailable => throw _privateConstructorUsedError;
   ShopifyImage? get image => throw _privateConstructorUsedError;
   PriceV2? get compareAtPrice => throw _privateConstructorUsedError;
   double? get weight => throw _privateConstructorUsedError;
@@ -51,7 +51,7 @@ abstract class $ProductVariantCheckoutCopyWith<$Res> {
       String sku,
       bool requiresShipping,
       String id,
-      int quantityAvailable,
+      int? quantityAvailable,
       ShopifyImage? image,
       PriceV2? compareAtPrice,
       double? weight,
@@ -113,7 +113,7 @@ class _$ProductVariantCheckoutCopyWithImpl<$Res>
       quantityAvailable: quantityAvailable == freezed
           ? _value.quantityAvailable
           : quantityAvailable // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -177,7 +177,7 @@ abstract class _$$_ProductVariantCheckoutCopyWith<$Res>
       String sku,
       bool requiresShipping,
       String id,
-      int quantityAvailable,
+      int? quantityAvailable,
       ShopifyImage? image,
       PriceV2? compareAtPrice,
       double? weight,
@@ -245,7 +245,7 @@ class __$$_ProductVariantCheckoutCopyWithImpl<$Res>
       quantityAvailable: quantityAvailable == freezed
           ? _value.quantityAvailable
           : quantityAvailable // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       image: image == freezed
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
@@ -276,7 +276,7 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
       required this.sku,
       required this.requiresShipping,
       required this.id,
-      required this.quantityAvailable,
+      this.quantityAvailable,
       this.image,
       this.compareAtPrice,
       this.weight,
@@ -299,7 +299,7 @@ class _$_ProductVariantCheckout extends _ProductVariantCheckout {
   @override
   final String id;
   @override
-  final int quantityAvailable;
+  final int? quantityAvailable;
   @override
   final ShopifyImage? image;
   @override
@@ -373,7 +373,7 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
       required final String sku,
       required final bool requiresShipping,
       required final String id,
-      required final int quantityAvailable,
+      final int? quantityAvailable,
       final ShopifyImage? image,
       final PriceV2? compareAtPrice,
       final double? weight,
@@ -396,7 +396,7 @@ abstract class _ProductVariantCheckout extends ProductVariantCheckout {
   @override
   String get id => throw _privateConstructorUsedError;
   @override
-  int get quantityAvailable => throw _privateConstructorUsedError;
+  int? get quantityAvailable => throw _privateConstructorUsedError;
   @override
   ShopifyImage? get image => throw _privateConstructorUsedError;
   @override

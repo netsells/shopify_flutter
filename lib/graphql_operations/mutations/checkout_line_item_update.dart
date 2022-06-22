@@ -82,6 +82,7 @@ mutation checkoutLineItemsUpdate($lineItems: [CheckoutLineItemUpdateInput!]!, $c
               weight
               weightUnit
               availableForSale
+              quantityAvailable
               sku
               requiresShipping
             }

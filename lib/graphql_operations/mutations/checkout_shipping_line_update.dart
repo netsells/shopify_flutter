@@ -93,6 +93,7 @@ mutation checkoutShippingLineUpdate($checkoutId: ID!, $shippingRateHandle: Strin
               weight
               weightUnit
               availableForSale
+              quantityAvailable
               sku
               requiresShipping
             }
