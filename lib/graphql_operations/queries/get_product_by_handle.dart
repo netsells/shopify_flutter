@@ -1,19 +1,13 @@
-const String getProductsQuery = r'''
-query($cursor : String, $metafieldsNamespace : String){
-  products(first: 250, after: $cursor) {
-    pageInfo {
-      hasNextPage
+const String getProductByHandleQuery = r'''
+query($handle: String!) {
+  product(handle: $handle) {
+    options(first: 50) {
+      id
+      name
+      values
     }
-    edges {
-      cursor
-      node {
-        options(first: 50) {
-          id
-          name
-          values
-        }
-        variants(first: 250) {
-          edges {
+    variants(first: 250) {
+      edges {
             node {
               id
               title
@@ -61,11 +55,6 @@ query($cursor : String, $metafieldsNamespace : String){
         }
         createdAt
         description
-            options{
-              id
-              name
-              values
-            }
         descriptionHtml
         handle
         id
@@ -85,9 +74,6 @@ query($cursor : String, $metafieldsNamespace : String){
             }
           }
         }
-      }
-    }
   }
 }
-
-''';
+ ''';
