@@ -102,6 +102,7 @@ query($id: ID!){
               weight
               weightUnit
               availableForSale
+              quantityAvailable
               sku
               requiresShipping
             }

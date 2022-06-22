@@ -16,6 +16,7 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
     required String sku,
     required bool requiresShipping,
     required String id,
+    int? quantityAvailable,
     ShopifyImage? image,
     PriceV2? compareAtPrice,
     double? weight,
