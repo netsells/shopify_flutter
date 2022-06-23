@@ -6,6 +6,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_produc
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_from_product.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_menu_by_handle.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_metafield_from_shop_query.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_metafileds_from_product.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_recommendations.dart';
@@ -227,6 +228,23 @@ class ShopifyStore with ShopifyError {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
     return Shop.fromJson(result.data!['shop']);
+  }
+
+  /// Returns a [Metafield].
+  ///
+  /// Gets a [Metafield] of the [Shop] optionally filtered by namespace.
+  Future<Metafield> getMetafieldFromShop(String metafieldKey, String namespace,
+      {bool deleteThisPartOfCache = false}) async {
+    final WatchQueryOptions _options = WatchQueryOptions(
+        document: gql(getMetafieldFromShopQuery),
+        variables: {'key': metafieldKey, 'namespace': namespace});
+    final QueryResult result =
+        await ShopifyConfig.graphQLClient!.query(_options);
+    checkForError(result);
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+    return Metafield.fromJson(result.data!['shop']['metafield']);
   }
 
   /// Returns a collection by handle.
