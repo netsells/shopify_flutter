@@ -2,6 +2,7 @@ import 'package:flutter_simple_shopify/enums/enums.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_blogs.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_blog_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_n_articles_sorted.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_related_articles.dart';
 import 'package:flutter_simple_shopify/mixins/src/shopfiy_error.dart';
 import 'package:flutter_simple_shopify/models/src/article/article.dart';
 import 'package:flutter_simple_shopify/models/src/article/articles/articles.dart';
@@ -75,6 +76,30 @@ class ShopifyBlog with ShopifyError {
         WatchQueryOptions(document: gql(getNArticlesSortedQuery), variables: {
       'x': articleAmount,
       'sortKey': sortKeyArticle.parseToString(),
+    });
+    final QueryResult result = await _graphQLClient!.query(_options);
+    checkForError(result);
+    if (deleteThisPartOfCache) {
+      _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+    }
+    return (Articles.fromJson(
+            (result.data ?? const {})['articles'] ?? const {}))
+        .articleList;
+  }
+
+  /// Returns a List of [Article]s.
+  ///
+  /// Returns a the first [articleAmount] of [Article]s with any of the given tags.
+  Future<List<Article>?> getRelatedArticles(
+    int articleAmount,
+    List<String> tags, {
+    bool deleteThisPartOfCache = false,
+  }) async {
+    final queries = tags.map((e) => '(tag:$e)');
+    final QueryOptions _options =
+        WatchQueryOptions(document: gql(getRelatedArticlesQuery), variables: {
+      'x': articleAmount,
+      'query': queries.join(' OR '),
     });
     final QueryResult result = await _graphQLClient!.query(_options);
     checkForError(result);
