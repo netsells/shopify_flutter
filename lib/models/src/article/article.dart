@@ -47,14 +47,14 @@ class Article with _$Article {
       publishedAt: (json['node'] ?? const {})['publishedAt'],
       tags: _getTagsList(json),
       title: (json['node'] ?? const {})['title'],
-      url: (json['node'] ?? const {})['url'],
+      url: (json['node'] ?? const {})['onlineStoreUrl'],
     );
   }
 
   static _getCommentList(Map<String, dynamic> json) {
     List<Comment> commentList = [];
-    json['edges']?.forEach(
-        (comment) => commentList.add(Comment.fromGraphJson(comment ?? const {})));
+    json['edges']?.forEach((comment) =>
+        commentList.add(Comment.fromGraphJson(comment ?? const {})));
     return commentList;
   }
 

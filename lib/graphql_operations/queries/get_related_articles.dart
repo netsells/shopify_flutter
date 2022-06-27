@@ -37,7 +37,7 @@ query($x : Int, $query: String){
         publishedAt
         tags
         title
-        url
+        onlineStoreUrl
       }
     }
   }
