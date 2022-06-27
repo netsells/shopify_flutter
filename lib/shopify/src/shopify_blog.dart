@@ -82,9 +82,7 @@ class ShopifyBlog with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return (Articles.fromJson(
-            (result.data ?? const {})['articles'] ?? const {}))
-        .articleList;
+    return (Articles.fromGraphJson(result.data ?? const {})).articleList;
   }
 
   /// Returns a List of [Article]s.
@@ -106,8 +104,6 @@ class ShopifyBlog with ShopifyError {
     if (deleteThisPartOfCache) {
       _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
     }
-    return (Articles.fromJson(
-            (result.data ?? const {})['articles'] ?? const {}))
-        .articleList;
+    return (Articles.fromGraphJson(result.data ?? const {})).articleList;
   }
 }
