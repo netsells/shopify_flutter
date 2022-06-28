@@ -13,5 +13,16 @@ class Option with _$Option {
     required List<String> values,
   }) = _Option;
 
+  static Option fromGraphJson(Map<String, dynamic> json) {
+    final nodeJson = json['node'] ?? const {};
+    return Option(
+      id: nodeJson['id'],
+      name: nodeJson['name'],
+      values: (nodeJson['values'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
+    );
+  }
+
   factory Option.fromJson(Map<String, dynamic> json) => _$OptionFromJson(json);
 }

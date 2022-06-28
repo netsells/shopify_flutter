@@ -24,15 +24,19 @@ mixin _$Product {
   String get id => throw _privateConstructorUsedError;
   bool get availableForSale => throw _privateConstructorUsedError;
   String get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
   List<ProductVariant> get productVariants =>
       throw _privateConstructorUsedError;
   String get productType => throw _privateConstructorUsedError;
   String get publishedAt => throw _privateConstructorUsedError;
   List<String> get tags => throw _privateConstructorUsedError;
   String get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: JsonHelper.images)
   List<ShopifyImage> get images => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: JsonHelper.options, name: 'options')
   List<Option> get option => throw _privateConstructorUsedError;
   String get vendor => throw _privateConstructorUsedError;
+  @JsonKey(fromJson: JsonHelper.metafields)
   List<Metafield> get metafields => throw _privateConstructorUsedError;
   List<AssociatedCollections>? get collectionList =>
       throw _privateConstructorUsedError;
@@ -56,15 +60,19 @@ abstract class $ProductCopyWith<$Res> {
       String id,
       bool availableForSale,
       String createdAt,
-      List<ProductVariant> productVariants,
+      @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
+          List<ProductVariant> productVariants,
       String productType,
       String publishedAt,
       List<String> tags,
       String updatedAt,
-      List<ShopifyImage> images,
-      List<Option> option,
+      @JsonKey(fromJson: JsonHelper.images)
+          List<ShopifyImage> images,
+      @JsonKey(fromJson: JsonHelper.options, name: 'options')
+          List<Option> option,
       String vendor,
-      List<Metafield> metafields,
+      @JsonKey(fromJson: JsonHelper.metafields)
+          List<Metafield> metafields,
       List<AssociatedCollections>? collectionList,
       String? cursor,
       String? onlineStoreUrl,
@@ -195,15 +203,19 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       String id,
       bool availableForSale,
       String createdAt,
-      List<ProductVariant> productVariants,
+      @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
+          List<ProductVariant> productVariants,
       String productType,
       String publishedAt,
       List<String> tags,
       String updatedAt,
-      List<ShopifyImage> images,
-      List<Option> option,
+      @JsonKey(fromJson: JsonHelper.images)
+          List<ShopifyImage> images,
+      @JsonKey(fromJson: JsonHelper.options, name: 'options')
+          List<Option> option,
       String vendor,
-      List<Metafield> metafields,
+      @JsonKey(fromJson: JsonHelper.metafields)
+          List<Metafield> metafields,
       List<AssociatedCollections>? collectionList,
       String? cursor,
       String? onlineStoreUrl,
@@ -332,15 +344,19 @@ class _$_Product extends _Product {
       required this.id,
       required this.availableForSale,
       required this.createdAt,
-      required final List<ProductVariant> productVariants,
+      @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
+          required final List<ProductVariant> productVariants,
       required this.productType,
       required this.publishedAt,
       required final List<String> tags,
       required this.updatedAt,
-      required final List<ShopifyImage> images,
-      required final List<Option> option,
+      @JsonKey(fromJson: JsonHelper.images)
+          required final List<ShopifyImage> images,
+      @JsonKey(fromJson: JsonHelper.options, name: 'options')
+          required final List<Option> option,
       required this.vendor,
-      required final List<Metafield> metafields,
+      @JsonKey(fromJson: JsonHelper.metafields)
+          required final List<Metafield> metafields,
       final List<AssociatedCollections>? collectionList,
       this.cursor,
       this.onlineStoreUrl,
@@ -368,6 +384,7 @@ class _$_Product extends _Product {
   final String createdAt;
   final List<ProductVariant> _productVariants;
   @override
+  @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
   List<ProductVariant> get productVariants {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_productVariants);
@@ -388,6 +405,7 @@ class _$_Product extends _Product {
   final String updatedAt;
   final List<ShopifyImage> _images;
   @override
+  @JsonKey(fromJson: JsonHelper.images)
   List<ShopifyImage> get images {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_images);
@@ -395,6 +413,7 @@ class _$_Product extends _Product {
 
   final List<Option> _option;
   @override
+  @JsonKey(fromJson: JsonHelper.options, name: 'options')
   List<Option> get option {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_option);
@@ -404,6 +423,7 @@ class _$_Product extends _Product {
   final String vendor;
   final List<Metafield> _metafields;
   @override
+  @JsonKey(fromJson: JsonHelper.metafields)
   List<Metafield> get metafields {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_metafields);
@@ -511,15 +531,19 @@ abstract class _Product extends Product {
       required final String id,
       required final bool availableForSale,
       required final String createdAt,
-      required final List<ProductVariant> productVariants,
+      @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
+          required final List<ProductVariant> productVariants,
       required final String productType,
       required final String publishedAt,
       required final List<String> tags,
       required final String updatedAt,
-      required final List<ShopifyImage> images,
-      required final List<Option> option,
+      @JsonKey(fromJson: JsonHelper.images)
+          required final List<ShopifyImage> images,
+      @JsonKey(fromJson: JsonHelper.options, name: 'options')
+          required final List<Option> option,
       required final String vendor,
-      required final List<Metafield> metafields,
+      @JsonKey(fromJson: JsonHelper.metafields)
+          required final List<Metafield> metafields,
       final List<AssociatedCollections>? collectionList,
       final String? cursor,
       final String? onlineStoreUrl,
@@ -539,6 +563,7 @@ abstract class _Product extends Product {
   @override
   String get createdAt => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
   List<ProductVariant> get productVariants =>
       throw _privateConstructorUsedError;
   @override
@@ -550,12 +575,15 @@ abstract class _Product extends Product {
   @override
   String get updatedAt => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: JsonHelper.images)
   List<ShopifyImage> get images => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: JsonHelper.options, name: 'options')
   List<Option> get option => throw _privateConstructorUsedError;
   @override
   String get vendor => throw _privateConstructorUsedError;
   @override
+  @JsonKey(fromJson: JsonHelper.metafields)
   List<Metafield> get metafields => throw _privateConstructorUsedError;
   @override
   List<AssociatedCollections>? get collectionList =>

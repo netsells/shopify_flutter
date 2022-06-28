@@ -1,6 +1,10 @@
 const String getAllOrdersQuery = r'''
-query getOrders($sortKey : OrderSortKeys, $accessToken : String!, $reverse: Boolean){
-customer(customerAccessToken: $accessToken) {
+query getOrders(
+  $sortKey: OrderSortKeys
+  $accessToken: String!
+  $reverse: Boolean
+) {
+  customer(customerAccessToken: $accessToken) {
     orders(first: 250, sortKey: $sortKey, reverse: $reverse) {
       edges {
         node {
@@ -49,6 +53,85 @@ customer(customerAccessToken: $accessToken) {
                   sku
                   requiresShipping
                   id
+                  selectedOptions {
+                    name
+                    value
+                  }
+                  product {
+                    options(first: 50) {
+                      id
+                      name
+                      values
+                    }
+                    variants(first: 250) {
+                      edges {
+                        node {
+                          id
+                          title
+                          image {
+                            altText
+                            id
+                            originalSrc
+                          }
+                          priceV2 {
+                            amount
+                            currencyCode
+                          }
+                          compareAtPriceV2 {
+                            amount
+                            currencyCode
+                          }
+                          weight
+                          weightUnit
+                          availableForSale
+                          sku
+                          requiresShipping
+                          quantityAvailable
+                          selectedOptions {
+                            name
+                            value
+                          }
+                        }
+                      }
+                      pageInfo {
+                        hasNextPage
+                      }
+                    }
+                    availableForSale
+                    collections(first: 250) {
+                      edges {
+                        node {
+                          description
+                          descriptionHtml
+                          id
+                          handle
+                          updatedAt
+                          title
+                        }
+                      }
+                    }
+                    createdAt
+                    description
+                    descriptionHtml
+                    handle
+                    id
+                    onlineStoreUrl
+                    productType
+                    publishedAt
+                    tags
+                    title
+                    updatedAt
+                    vendor
+                    images(first: 250) {
+                      edges {
+                        node {
+                          altText
+                          id
+                          originalSrc
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -97,9 +180,9 @@ customer(customerAccessToken: $accessToken) {
             currencyCode
           }
           fulfillmentStatus
-          successfulFulfillments(first: 20){
+          successfulFulfillments(first: 20) {
             trackingCompany
-            trackingInfo(first: 20){
+            trackingInfo(first: 20) {
               number
               url
             }
@@ -111,4 +194,5 @@ customer(customerAccessToken: $accessToken) {
     id
   }
 }
+
 ''';

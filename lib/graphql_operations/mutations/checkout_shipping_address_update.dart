@@ -1,6 +1,32 @@
 const String checkoutShippingAddressUpdateMutation = r'''
-mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $address2 : String, $company : String, $city : String, $country : String, $firstName: String, $lastName : String, $phone : String, $province : String, $zip : String) {
-  checkoutShippingAddressUpdateV2(checkoutId: $checkoutId, shippingAddress: {address1: $address1, address2: $address2, company: $company, city: $city, country: $country, firstName: $firstName, lastName: $lastName, phone: $phone, province: $province, zip: $zip}) {
+mutation checkoutShippingAddressUpdate(
+  $checkoutId: ID!
+  $address1: String
+  $address2: String
+  $company: String
+  $city: String
+  $country: String
+  $firstName: String
+  $lastName: String
+  $phone: String
+  $province: String
+  $zip: String
+) {
+  checkoutShippingAddressUpdateV2(
+    checkoutId: $checkoutId
+    shippingAddress: {
+      address1: $address1
+      address2: $address2
+      company: $company
+      city: $city
+      country: $country
+      firstName: $firstName
+      lastName: $lastName
+      phone: $phone
+      province: $province
+      zip: $zip
+    }
+  ) {
     checkout {
       id
       email
@@ -54,10 +80,10 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
             quantity
             title
             customAttributes {
-                key
-                value
+              key
+              value
             }
-             discountAllocations {
+            discountAllocations {
               allocatedAmount {
                 amount
                 currencyCode
@@ -85,6 +111,81 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
               quantityAvailable
               sku
               requiresShipping
+              product {
+                options(first: 50) {
+                  id
+                  name
+                  values
+                }
+                variants(first: 250) {
+                  edges {
+                    node {
+                      id
+                      title
+                      image {
+                        altText
+                        id
+                        originalSrc
+                      }
+                      priceV2 {
+                        amount
+                        currencyCode
+                      }
+                      compareAtPriceV2 {
+                        amount
+                        currencyCode
+                      }
+                      weight
+                      weightUnit
+                      availableForSale
+                      sku
+                      requiresShipping
+                      quantityAvailable
+                      selectedOptions {
+                        name
+                        value
+                      }
+                    }
+                  }
+                  pageInfo {
+                    hasNextPage
+                  }
+                }
+                availableForSale
+                collections(first: 250) {
+                  edges {
+                    node {
+                      description
+                      descriptionHtml
+                      id
+                      handle
+                      updatedAt
+                      title
+                    }
+                  }
+                }
+                createdAt
+                description
+                descriptionHtml
+                handle
+                id
+                onlineStoreUrl
+                productType
+                publishedAt
+                tags
+                title
+                updatedAt
+                vendor
+                images(first: 250) {
+                  edges {
+                    node {
+                      altText
+                      id
+                      originalSrc
+                    }
+                  }
+                }
+              }
             }
           }
         }
@@ -111,10 +212,11 @@ mutation checkoutShippingAddressUpdate($checkoutId : ID!, $address1 : String, $a
         id
       }
     }
-     checkoutUserErrors {
+    checkoutUserErrors {
       code
       field
       message
     }
   }
-}''';
+}
+''';

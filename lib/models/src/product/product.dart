@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/models/json_helper.dart';
 import 'package:flutter_simple_shopify/models/src/product/metafield/metafield.dart';
 import 'package:flutter_simple_shopify/models/src/product/option/option.dart';
 import 'package:flutter_simple_shopify/models/src/product/product_variant/product_variant.dart';
@@ -17,15 +18,18 @@ class Product with _$Product {
     required String id,
     required bool availableForSale,
     required String createdAt,
-    required List<ProductVariant> productVariants,
+    @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
+        required List<ProductVariant> productVariants,
     required String productType,
     required String publishedAt,
     required List<String> tags,
     required String updatedAt,
-    required List<ShopifyImage> images,
-    required List<Option> option,
+    @JsonKey(fromJson: JsonHelper.images) required List<ShopifyImage> images,
+    @JsonKey(fromJson: JsonHelper.options, name: 'options')
+        required List<Option> option,
     required String vendor,
-    required List<Metafield> metafields,
+    @JsonKey(fromJson: JsonHelper.metafields)
+        required List<Metafield> metafields,
     List<AssociatedCollections>? collectionList,
     String? cursor,
     String? onlineStoreUrl,
