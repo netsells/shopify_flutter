@@ -1,5 +1,5 @@
 const String getCollectionsFromProductQuery = r'''
-query($handle: String!, $namespace: String!) {
+query($handle: String!) {
   productByHandle(handle: $handle) {
     collections(first: 250) {
       edges {

@@ -482,8 +482,9 @@ class ShopifyStore with ShopifyError {
   ///
   /// Gets [Collection]s a [Product] is in.
   Future<List<Collection>> getCollectionsFromProduct(
-      String productHandle, String namespace,
-      {bool deleteThisPartOfCache = false}) async {
+    String productHandle, {
+    bool deleteThisPartOfCache = false,
+  }) async {
     final WatchQueryOptions _options = WatchQueryOptions(
         document: gql(getCollectionsFromProductQuery),
         variables: {'handle': productHandle});
