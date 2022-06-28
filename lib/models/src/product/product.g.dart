@@ -11,23 +11,15 @@ _$_Product _$$_ProductFromJson(Map<String, dynamic> json) => _$_Product(
       id: json['id'] as String,
       availableForSale: json['availableForSale'] as bool,
       createdAt: json['createdAt'] as String,
-      productVariants: (json['productVariants'] as List<dynamic>)
-          .map((e) => ProductVariant.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      productVariants: JsonHelper.productVariants(json['variants']),
       productType: json['productType'] as String,
       publishedAt: json['publishedAt'] as String,
       tags: (json['tags'] as List<dynamic>).map((e) => e as String).toList(),
       updatedAt: json['updatedAt'] as String,
-      images: (json['images'] as List<dynamic>)
-          .map((e) => ShopifyImage.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      option: (json['option'] as List<dynamic>)
-          .map((e) => Option.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      images: JsonHelper.images(json['images']),
+      option: JsonHelper.options(json['options']),
       vendor: json['vendor'] as String,
-      metafields: (json['metafields'] as List<dynamic>)
-          .map((e) => Metafield.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      metafields: JsonHelper.metafields(json['metafields']),
       collectionList: (json['collectionList'] as List<dynamic>?)
           ?.map(
               (e) => AssociatedCollections.fromJson(e as Map<String, dynamic>))
@@ -45,13 +37,13 @@ Map<String, dynamic> _$$_ProductToJson(_$_Product instance) =>
       'id': instance.id,
       'availableForSale': instance.availableForSale,
       'createdAt': instance.createdAt,
-      'productVariants': instance.productVariants,
+      'variants': instance.productVariants,
       'productType': instance.productType,
       'publishedAt': instance.publishedAt,
       'tags': instance.tags,
       'updatedAt': instance.updatedAt,
       'images': instance.images,
-      'option': instance.option,
+      'options': instance.option,
       'vendor': instance.vendor,
       'metafields': instance.metafields,
       'collectionList': instance.collectionList,

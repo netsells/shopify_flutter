@@ -1,6 +1,11 @@
+import 'package:flutter_simple_shopify/models/src/product/metafield/metafield.dart';
+import 'package:flutter_simple_shopify/models/src/product/option/option.dart';
+import 'package:flutter_simple_shopify/models/src/product/product_variant/product_variant.dart';
+import 'package:flutter_simple_shopify/models/src/product/shopify_image/shopify_image.dart';
 import 'package:intl/intl.dart';
 
 import 'src/checkout/line_item/line_item.dart';
+import 'src/product/product.dart';
 
 class JsonHelper {
   const JsonHelper._();
@@ -16,6 +21,60 @@ class JsonHelper {
 
     return (json['edges'] as List)
         .map((e) => LineItem.fromGraphJson(e))
+        .toList();
+  }
+
+  static List<ProductVariant> productVariants(dynamic json) {
+    if (json == null)
+      return [];
+    else if (json is List) {
+      return json.map((e) => ProductVariant.fromJson(e)).toList();
+    } else if (json['edges'] == null) {
+      return [];
+    }
+
+    return (json['edges'] as List)
+        .map((e) => ProductVariant.fromGraphJson(e))
+        .toList();
+  }
+
+  static List<ShopifyImage> images(dynamic json) {
+    if (json == null)
+      return [];
+    else if (json is List) {
+      return json.map((e) => ShopifyImage.fromJson(e)).toList();
+    } else if (json['edges'] == null) {
+      return [];
+    }
+
+    return (json['edges'] as List)
+        .map((e) => ShopifyImage.fromGraphJson(e))
+        .toList();
+  }
+
+  static List<Option> options(dynamic json) {
+    if (json == null)
+      return [];
+    else if (json is List) {
+      return json.map((e) => Option.fromJson(e)).toList();
+    } else if (json['edges'] == null) {
+      return [];
+    }
+
+    return (json['edges'] as List).map((e) => Option.fromGraphJson(e)).toList();
+  }
+
+  static List<Metafield> metafields(dynamic json) {
+    if (json == null)
+      return [];
+    else if (json is List) {
+      return json.map((e) => Metafield.fromGraphJson(e)).toList();
+    } else if (json['edges'] == null) {
+      return [];
+    }
+
+    return (json['edges'] as List)
+        .map((e) => Metafield.fromGraphJson(e))
         .toList();
   }
 

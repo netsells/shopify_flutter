@@ -13,6 +13,15 @@ class ShopifyImage with _$ShopifyImage {
     String? altText,
   }) = _ShopifyImage;
 
+  static ShopifyImage fromGraphJson(Map<String, dynamic> json) {
+    final nodeJson = json['node'] ?? const {};
+    return ShopifyImage(
+      originalSrc: nodeJson['originalSrc'],
+      id: nodeJson['id'],
+      altText: nodeJson['altText'],
+    );
+  }
+
   factory ShopifyImage.fromJson(Map<String, dynamic> json) =>
       _$ShopifyImageFromJson(json);
 }

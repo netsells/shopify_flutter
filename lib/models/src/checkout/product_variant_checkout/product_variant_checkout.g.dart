@@ -24,6 +24,10 @@ _$_ProductVariantCheckout _$$_ProductVariantCheckoutFromJson(
           : PriceV2.fromJson(json['compareAtPrice'] as Map<String, dynamic>),
       weight: (json['weight'] as num?)?.toDouble(),
       weightUnit: json['weightUnit'] as String?,
+      product: Product.fromJson(json['product'] as Map<String, dynamic>),
+      selectedOptions: (json['selectedOptions'] as List<dynamic>?)
+          ?.map((e) => SelectedOption.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_ProductVariantCheckoutToJson(
@@ -40,4 +44,6 @@ Map<String, dynamic> _$$_ProductVariantCheckoutToJson(
       'compareAtPrice': instance.compareAtPrice,
       'weight': instance.weight,
       'weightUnit': instance.weightUnit,
+      'product': instance.product,
+      'selectedOptions': instance.selectedOptions,
     };

@@ -1,4 +1,6 @@
+import 'package:flutter_simple_shopify/flutter_simple_shopify.dart';
 import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
+import 'package:flutter_simple_shopify/models/src/product/selected_option/selected_option.dart';
 import 'package:flutter_simple_shopify/models/src/product/shopify_image/shopify_image.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -21,6 +23,8 @@ class ProductVariantCheckout with _$ProductVariantCheckout {
     PriceV2? compareAtPrice,
     double? weight,
     String? weightUnit,
+    required Product product,
+    List<SelectedOption>? selectedOptions,
   }) = _ProductVariantCheckout;
 
   factory ProductVariantCheckout.fromJson(Map<String, dynamic> json) =>
