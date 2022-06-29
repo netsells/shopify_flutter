@@ -1,6 +1,6 @@
-const String getNArticlesSortedQuery = r'''
-query($x : Int, $sortKey : ArticleSortKeys, $reverse: Boolean){
-  articles(first: $x, sortKey: $sortKey, reverse: $reverse) {
+const String getRelatedArticlesQuery = r'''
+query($x : Int, $query: String){
+  articles(first: $x, query: $query) {
     edges {
       node {
         authorV2 {
