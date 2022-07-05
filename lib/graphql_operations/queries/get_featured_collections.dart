@@ -37,6 +37,7 @@ query getFeaturedCollectionQuery($query: String!){
                     weight
                     weightUnit
                     sku
+                    id
                     requiresShipping
                     availableForSale
                     quantityAvailable
