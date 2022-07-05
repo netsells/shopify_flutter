@@ -282,7 +282,7 @@ class ShopifyStore with ShopifyError {
       }
       final data = result.data!['collection'];
       if (data != null) {
-        return Collection.fromJson(data);
+        return Collection.fromGraphJson({"node": data});
       }
     } catch (e) {
       print(e);
