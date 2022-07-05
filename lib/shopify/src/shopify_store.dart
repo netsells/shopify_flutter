@@ -3,6 +3,7 @@ import 'package:flutter_simple_shopify/enums/src/sort_key_collection.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_collections_optimized.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_from_collection_by_id.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_all_products_on_query.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_collection_by_handle.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_collections_from_product.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_menu_by_handle.dart';
@@ -265,6 +266,28 @@ class ShopifyStore with ShopifyError {
       print(e);
     }
     return Collection.fromGraphJson({});
+  }
+
+  /// Returns a single collection by handle.
+  Future<Collection?> getSingleCollectionByHandle(String collectionName,
+      {bool deleteThisPartOfCache = false}) async {
+    try {
+      final WatchQueryOptions _options = WatchQueryOptions(
+          document: gql(getCollectionByHandleQuery),
+          variables: {'handle': collectionName});
+      final QueryResult result = await _graphQLClient!.query(_options);
+      checkForError(result);
+      if (deleteThisPartOfCache) {
+        _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+      }
+      final data = result.data!['collection'];
+      if (data != null) {
+        return Collection.fromJson(data);
+      }
+    } catch (e) {
+      print(e);
+    }
+    return null;
   }
 
   /// Returns all available collections.
