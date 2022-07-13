@@ -13,6 +13,7 @@ import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_by
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_product_recommendations.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_products_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_shop.dart';
+import 'package:flutter_simple_shopify/graphql_operations/queries/get_simple_collections_by_ids.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_collections_and_n_products_sorted.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor.dart';
 import 'package:flutter_simple_shopify/graphql_operations/queries/get_x_products_after_cursor_within_collection.dart';
@@ -197,6 +198,36 @@ class ShopifyStore with ShopifyError {
     try {
       final WatchQueryOptions _options = WatchQueryOptions(
           document: gql(getCollectionsByIdsQuery),
+          variables: {
+            'ids': idList,
+            'cursor': cursor,
+            'sortKey': sortKeyProductCollection.parseToString()
+          });
+      final QueryResult result = await _graphQLClient!.query(_options);
+      checkForError(result);
+      if (deleteThisPartOfCache) {
+        _graphQLClient!.cache.writeQuery(_options.asRequest, data: {});
+      }
+
+      var newResponse = List.generate(result.data!['nodes']?.length ?? 0,
+          (index) => {"node": (result.data!['nodes'] ?? const {})[index]});
+      var tempCollection = {"edges": newResponse};
+      return Collections.fromGraphJson(tempCollection).collectionList;
+    } catch (e) {
+      print(e);
+    }
+    return [Collection.fromJson({})];
+  }
+
+  /// Returns a List of [Collection]
+  Future<List<Collection>?> getSimpleCollectionsByIds(List<String> idList,
+      {bool deleteThisPartOfCache = false,
+      SortKeyProductCollection sortKeyProductCollection =
+          SortKeyProductCollection.CREATED}) async {
+    String? cursor;
+    try {
+      final WatchQueryOptions _options = WatchQueryOptions(
+          document: gql(getSimpleCollectionsByIdsQuery),
           variables: {
             'ids': idList,
             'cursor': cursor,

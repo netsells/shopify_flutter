@@ -23,21 +23,21 @@ mixin _$Product {
   String get title => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   bool get availableForSale => throw _privateConstructorUsedError;
-  String get createdAt => throw _privateConstructorUsedError;
+  String? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
-  List<ProductVariant> get productVariants =>
+  List<ProductVariant>? get productVariants =>
       throw _privateConstructorUsedError;
-  String get productType => throw _privateConstructorUsedError;
-  String get publishedAt => throw _privateConstructorUsedError;
-  List<String> get tags => throw _privateConstructorUsedError;
-  String get updatedAt => throw _privateConstructorUsedError;
+  String? get productType => throw _privateConstructorUsedError;
+  String? get publishedAt => throw _privateConstructorUsedError;
+  List<String>? get tags => throw _privateConstructorUsedError;
+  String? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(fromJson: JsonHelper.images)
-  List<ShopifyImage> get images => throw _privateConstructorUsedError;
+  List<ShopifyImage>? get images => throw _privateConstructorUsedError;
   @JsonKey(fromJson: JsonHelper.options, name: 'options')
-  List<Option> get option => throw _privateConstructorUsedError;
-  String get vendor => throw _privateConstructorUsedError;
+  List<Option>? get option => throw _privateConstructorUsedError;
+  String? get vendor => throw _privateConstructorUsedError;
   @JsonKey(fromJson: JsonHelper.metafields)
-  List<Metafield> get metafields => throw _privateConstructorUsedError;
+  List<Metafield>? get metafields => throw _privateConstructorUsedError;
   List<AssociatedCollections>? get collectionList =>
       throw _privateConstructorUsedError;
   String? get cursor => throw _privateConstructorUsedError;
@@ -59,20 +59,20 @@ abstract class $ProductCopyWith<$Res> {
       {String title,
       String id,
       bool availableForSale,
-      String createdAt,
+      String? createdAt,
       @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
-          List<ProductVariant> productVariants,
-      String productType,
-      String publishedAt,
-      List<String> tags,
-      String updatedAt,
+          List<ProductVariant>? productVariants,
+      String? productType,
+      String? publishedAt,
+      List<String>? tags,
+      String? updatedAt,
       @JsonKey(fromJson: JsonHelper.images)
-          List<ShopifyImage> images,
+          List<ShopifyImage>? images,
       @JsonKey(fromJson: JsonHelper.options, name: 'options')
-          List<Option> option,
-      String vendor,
+          List<Option>? option,
+      String? vendor,
       @JsonKey(fromJson: JsonHelper.metafields)
-          List<Metafield> metafields,
+          List<Metafield>? metafields,
       List<AssociatedCollections>? collectionList,
       String? cursor,
       String? onlineStoreUrl,
@@ -127,43 +127,43 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       productVariants: productVariants == freezed
           ? _value.productVariants
           : productVariants // ignore: cast_nullable_to_non_nullable
-              as List<ProductVariant>,
+              as List<ProductVariant>?,
       productType: productType == freezed
           ? _value.productType
           : productType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       publishedAt: publishedAt == freezed
           ? _value.publishedAt
           : publishedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       tags: tags == freezed
           ? _value.tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       images: images == freezed
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<ShopifyImage>,
+              as List<ShopifyImage>?,
       option: option == freezed
           ? _value.option
           : option // ignore: cast_nullable_to_non_nullable
-              as List<Option>,
+              as List<Option>?,
       vendor: vendor == freezed
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       metafields: metafields == freezed
           ? _value.metafields
           : metafields // ignore: cast_nullable_to_non_nullable
-              as List<Metafield>,
+              as List<Metafield>?,
       collectionList: collectionList == freezed
           ? _value.collectionList
           : collectionList // ignore: cast_nullable_to_non_nullable
@@ -202,20 +202,20 @@ abstract class _$$_ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       {String title,
       String id,
       bool availableForSale,
-      String createdAt,
+      String? createdAt,
       @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
-          List<ProductVariant> productVariants,
-      String productType,
-      String publishedAt,
-      List<String> tags,
-      String updatedAt,
+          List<ProductVariant>? productVariants,
+      String? productType,
+      String? publishedAt,
+      List<String>? tags,
+      String? updatedAt,
       @JsonKey(fromJson: JsonHelper.images)
-          List<ShopifyImage> images,
+          List<ShopifyImage>? images,
       @JsonKey(fromJson: JsonHelper.options, name: 'options')
-          List<Option> option,
-      String vendor,
+          List<Option>? option,
+      String? vendor,
       @JsonKey(fromJson: JsonHelper.metafields)
-          List<Metafield> metafields,
+          List<Metafield>? metafields,
       List<AssociatedCollections>? collectionList,
       String? cursor,
       String? onlineStoreUrl,
@@ -271,43 +271,43 @@ class __$$_ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       createdAt: createdAt == freezed
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       productVariants: productVariants == freezed
           ? _value._productVariants
           : productVariants // ignore: cast_nullable_to_non_nullable
-              as List<ProductVariant>,
+              as List<ProductVariant>?,
       productType: productType == freezed
           ? _value.productType
           : productType // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       publishedAt: publishedAt == freezed
           ? _value.publishedAt
           : publishedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       tags: tags == freezed
           ? _value._tags
           : tags // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<String>?,
       updatedAt: updatedAt == freezed
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       images: images == freezed
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
-              as List<ShopifyImage>,
+              as List<ShopifyImage>?,
       option: option == freezed
           ? _value._option
           : option // ignore: cast_nullable_to_non_nullable
-              as List<Option>,
+              as List<Option>?,
       vendor: vendor == freezed
           ? _value.vendor
           : vendor // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       metafields: metafields == freezed
           ? _value._metafields
           : metafields // ignore: cast_nullable_to_non_nullable
-              as List<Metafield>,
+              as List<Metafield>?,
       collectionList: collectionList == freezed
           ? _value._collectionList
           : collectionList // ignore: cast_nullable_to_non_nullable
@@ -343,20 +343,20 @@ class _$_Product extends _Product {
       {required this.title,
       required this.id,
       required this.availableForSale,
-      required this.createdAt,
+      this.createdAt,
       @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
-          required final List<ProductVariant> productVariants,
-      required this.productType,
-      required this.publishedAt,
-      required final List<String> tags,
-      required this.updatedAt,
+          final List<ProductVariant>? productVariants,
+      this.productType,
+      this.publishedAt,
+      final List<String>? tags,
+      this.updatedAt,
       @JsonKey(fromJson: JsonHelper.images)
-          required final List<ShopifyImage> images,
+          final List<ShopifyImage>? images,
       @JsonKey(fromJson: JsonHelper.options, name: 'options')
-          required final List<Option> option,
-      required this.vendor,
+          final List<Option>? option,
+      this.vendor,
       @JsonKey(fromJson: JsonHelper.metafields)
-          required final List<Metafield> metafields,
+          final List<Metafield>? metafields,
       final List<AssociatedCollections>? collectionList,
       this.cursor,
       this.onlineStoreUrl,
@@ -381,52 +381,62 @@ class _$_Product extends _Product {
   @override
   final bool availableForSale;
   @override
-  final String createdAt;
-  final List<ProductVariant> _productVariants;
+  final String? createdAt;
+  final List<ProductVariant>? _productVariants;
   @override
   @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
-  List<ProductVariant> get productVariants {
+  List<ProductVariant>? get productVariants {
+    final value = _productVariants;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_productVariants);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String productType;
+  final String? productType;
   @override
-  final String publishedAt;
-  final List<String> _tags;
+  final String? publishedAt;
+  final List<String>? _tags;
   @override
-  List<String> get tags {
+  List<String>? get tags {
+    final value = _tags;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_tags);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String updatedAt;
-  final List<ShopifyImage> _images;
+  final String? updatedAt;
+  final List<ShopifyImage>? _images;
   @override
   @JsonKey(fromJson: JsonHelper.images)
-  List<ShopifyImage> get images {
+  List<ShopifyImage>? get images {
+    final value = _images;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_images);
+    return EqualUnmodifiableListView(value);
   }
 
-  final List<Option> _option;
+  final List<Option>? _option;
   @override
   @JsonKey(fromJson: JsonHelper.options, name: 'options')
-  List<Option> get option {
+  List<Option>? get option {
+    final value = _option;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_option);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
-  final String vendor;
-  final List<Metafield> _metafields;
+  final String? vendor;
+  final List<Metafield>? _metafields;
   @override
   @JsonKey(fromJson: JsonHelper.metafields)
-  List<Metafield> get metafields {
+  List<Metafield>? get metafields {
+    final value = _metafields;
+    if (value == null) return null;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_metafields);
+    return EqualUnmodifiableListView(value);
   }
 
   final List<AssociatedCollections>? _collectionList;
@@ -530,20 +540,20 @@ abstract class _Product extends Product {
       {required final String title,
       required final String id,
       required final bool availableForSale,
-      required final String createdAt,
+      final String? createdAt,
       @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
-          required final List<ProductVariant> productVariants,
-      required final String productType,
-      required final String publishedAt,
-      required final List<String> tags,
-      required final String updatedAt,
+          final List<ProductVariant>? productVariants,
+      final String? productType,
+      final String? publishedAt,
+      final List<String>? tags,
+      final String? updatedAt,
       @JsonKey(fromJson: JsonHelper.images)
-          required final List<ShopifyImage> images,
+          final List<ShopifyImage>? images,
       @JsonKey(fromJson: JsonHelper.options, name: 'options')
-          required final List<Option> option,
-      required final String vendor,
+          final List<Option>? option,
+      final String? vendor,
       @JsonKey(fromJson: JsonHelper.metafields)
-          required final List<Metafield> metafields,
+          final List<Metafield>? metafields,
       final List<AssociatedCollections>? collectionList,
       final String? cursor,
       final String? onlineStoreUrl,
@@ -561,30 +571,30 @@ abstract class _Product extends Product {
   @override
   bool get availableForSale => throw _privateConstructorUsedError;
   @override
-  String get createdAt => throw _privateConstructorUsedError;
+  String? get createdAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
-  List<ProductVariant> get productVariants =>
+  List<ProductVariant>? get productVariants =>
       throw _privateConstructorUsedError;
   @override
-  String get productType => throw _privateConstructorUsedError;
+  String? get productType => throw _privateConstructorUsedError;
   @override
-  String get publishedAt => throw _privateConstructorUsedError;
+  String? get publishedAt => throw _privateConstructorUsedError;
   @override
-  List<String> get tags => throw _privateConstructorUsedError;
+  List<String>? get tags => throw _privateConstructorUsedError;
   @override
-  String get updatedAt => throw _privateConstructorUsedError;
+  String? get updatedAt => throw _privateConstructorUsedError;
   @override
   @JsonKey(fromJson: JsonHelper.images)
-  List<ShopifyImage> get images => throw _privateConstructorUsedError;
+  List<ShopifyImage>? get images => throw _privateConstructorUsedError;
   @override
   @JsonKey(fromJson: JsonHelper.options, name: 'options')
-  List<Option> get option => throw _privateConstructorUsedError;
+  List<Option>? get option => throw _privateConstructorUsedError;
   @override
-  String get vendor => throw _privateConstructorUsedError;
+  String? get vendor => throw _privateConstructorUsedError;
   @override
   @JsonKey(fromJson: JsonHelper.metafields)
-  List<Metafield> get metafields => throw _privateConstructorUsedError;
+  List<Metafield>? get metafields => throw _privateConstructorUsedError;
   @override
   List<AssociatedCollections>? get collectionList =>
       throw _privateConstructorUsedError;

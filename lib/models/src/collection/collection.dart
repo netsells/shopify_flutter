@@ -30,14 +30,17 @@ class Collection with _$Collection {
 
     for (final _product in _products.productList) {
       final _realProductVariants = <ProductVariant>[];
-      for (final _variant in _product.productVariants) {
-        if (_variant.title.toLowerCase().contains('default')) {
-          _realProductVariants
-              .add(_variant.copyWith.call(title: _product.title));
-        } else {
-          _realProductVariants.add(_variant);
+      if (_product.productVariants != null) {
+        for (final _variant in _product.productVariants!) {
+          if (_variant.title.toLowerCase().contains('default')) {
+            _realProductVariants
+                .add(_variant.copyWith.call(title: _product.title));
+          } else {
+            _realProductVariants.add(_variant);
+          }
         }
       }
+
       _realProducts
           .add(_product.copyWith.call(productVariants: _realProductVariants));
     }

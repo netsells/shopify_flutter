@@ -17,19 +17,18 @@ class Product with _$Product {
     required String title,
     required String id,
     required bool availableForSale,
-    required String createdAt,
+    String? createdAt,
     @JsonKey(fromJson: JsonHelper.productVariants, name: 'variants')
-        required List<ProductVariant> productVariants,
-    required String productType,
-    required String publishedAt,
-    required List<String> tags,
-    required String updatedAt,
-    @JsonKey(fromJson: JsonHelper.images) required List<ShopifyImage> images,
+        List<ProductVariant>? productVariants,
+    String? productType,
+    String? publishedAt,
+    List<String>? tags,
+    String? updatedAt,
+    @JsonKey(fromJson: JsonHelper.images) List<ShopifyImage>? images,
     @JsonKey(fromJson: JsonHelper.options, name: 'options')
-        required List<Option> option,
-    required String vendor,
-    @JsonKey(fromJson: JsonHelper.metafields)
-        required List<Metafield> metafields,
+        List<Option>? option,
+    String? vendor,
+    @JsonKey(fromJson: JsonHelper.metafields) List<Metafield>? metafields,
     List<AssociatedCollections>? collectionList,
     String? cursor,
     String? onlineStoreUrl,
@@ -66,10 +65,12 @@ class Product with _$Product {
       _$ProductFromJson(json);
 
   static List<ProductVariant> _getProductVariants(Map<String, dynamic> json) {
-    return (((json['node'] ?? const {})['variants'] ?? const {})['edges']
-            as List)
-        .map((v) => ProductVariant.fromGraphJson(v ?? const {}))
-        .toList();
+    if ((json['node'] ?? const {})['variants'] == null) return [];
+    List<ProductVariant> variants = [];
+
+    ((json['node'] ?? const {})['variants'] ?? const {})['edges']?.forEach(
+        (v) => variants.add(ProductVariant.fromGraphJson(v ?? const {})));
+    return variants;
   }
 
   static List<Option> _getOptionList(Map<String, dynamic> json) {
@@ -89,18 +90,18 @@ class Product with _$Product {
   static List<AssociatedCollections> _getCollectionList(
       Map<String, dynamic> json) {
     if ((json['node'] ?? const {})['collections'] == null) return [];
+    List<AssociatedCollections> collections = [];
 
-    return (((json['node'] ?? const {})['collections'] ?? const {})['edges']
-            as List)
-        .map((v) => AssociatedCollections.fromGraphJson(v ?? const {}))
-        .toList();
+    ((json['node'] ?? const {})['collections'] ?? const {})['edges']?.forEach(
+        (v) => collections
+            .add(AssociatedCollections.fromGraphJson(v ?? const {})));
+    return collections;
   }
 
   static _getImageList(Map<String, dynamic> json) {
     List<ShopifyImage> imageList = [];
-    if (json['edges'] != null)
-      json['edges'].forEach((image) =>
-          imageList.add(ShopifyImage.fromJson(image['node'] ?? const {})));
+    json['edges']?.forEach((image) =>
+        imageList.add(ShopifyImage.fromJson(image['node'] ?? const {})));
     return imageList;
   }
 
