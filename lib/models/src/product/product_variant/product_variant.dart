@@ -1,3 +1,4 @@
+import 'package:flutter_simple_shopify/models/src/checkout/product_variant_checkout/product_variant_checkout.dart';
 import 'package:flutter_simple_shopify/models/src/product/price_v_2/price_v_2.dart';
 import 'package:flutter_simple_shopify/models/src/product/selected_option/selected_option.dart';
 import 'package:flutter_simple_shopify/models/src/product/shopify_image/shopify_image.dart';
@@ -65,5 +66,24 @@ class ProductVariant with _$ProductVariant {
       if (v != null) optionList.add(SelectedOption.fromJson(v ?? const {}));
     });
     return optionList;
+  }
+
+  factory ProductVariant.fromCheckoutVariant(
+    ProductVariantCheckout checkoutVariant,
+  ) {
+    return ProductVariant(
+      price: checkoutVariant.priceV2,
+      title: checkoutVariant.title,
+      weight: checkoutVariant.weight ?? 0,
+      weightUnit: checkoutVariant.weightUnit ?? 'KG',
+      availableForSale: checkoutVariant.availableForSale,
+      sku: checkoutVariant.sku,
+      requiresShipping: checkoutVariant.requiresShipping,
+      id: checkoutVariant.id,
+      quantityAvailable: checkoutVariant.quantityAvailable ?? 0,
+      selectedOptions: checkoutVariant.selectedOptions,
+      image: checkoutVariant.image,
+      compareAtPrice: checkoutVariant.compareAtPrice,
+    );
   }
 }
