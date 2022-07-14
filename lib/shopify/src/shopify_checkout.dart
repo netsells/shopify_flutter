@@ -120,16 +120,22 @@ class ShopifyCheckout with ShopifyError {
   /// Returns all [Order] in a List of Orders.
   ///
   /// Returns a List of Orders from the Customer with the [customerAccessToken].
-  Future<List<Order>?> getAllOrders(String customerAccessToken,
-      {SortKeyOrder sortKey = SortKeyOrder.PROCESSED_AT,
-      bool reverse = true,
-      bool deleteThisPartOfCache = false}) async {
-    final QueryOptions _options =
-        WatchQueryOptions(document: gql(getAllOrdersQuery), variables: {
-      'accessToken': customerAccessToken,
-      'sortKey': sortKey.parseToString(),
-      'reverse': reverse
-    });
+  Future<List<Order>?> getAllOrders(
+    String customerAccessToken, {
+    SortKeyOrder sortKey = SortKeyOrder.PROCESSED_AT,
+    bool reverse = true,
+    bool deleteThisPartOfCache = false,
+    bool refresh = false,
+  }) async {
+    final QueryOptions _options = WatchQueryOptions(
+      document: gql(getAllOrdersQuery),
+      fetchPolicy: refresh ? FetchPolicy.networkOnly : null,
+      variables: {
+        'accessToken': customerAccessToken,
+        'sortKey': sortKey.parseToString(),
+        'reverse': reverse,
+      },
+    );
     final QueryResult result =
         await ShopifyConfig.graphQLClient!.query(_options);
     checkForError(result);
